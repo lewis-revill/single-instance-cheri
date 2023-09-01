@@ -115,7 +115,7 @@ mod inner {
                 None,
             )?;
 
-            let maybe_sock = match socket::bind(sock, &socket::SockAddr::Unix(addr)) {
+            let maybe_sock = match socket::bind(sock, &addr) {
                 Ok(()) => Some(sock),
                 Err(nix::errno::Errno::EADDRINUSE) => None,
                 Err(e) => return Err(e.into()),
